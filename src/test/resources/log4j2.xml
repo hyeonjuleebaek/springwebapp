@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+    <Console name="Out" target="SYSTEM_OUT">
+      <PatternLayout pattern="%-5level: %d{DEFAULT} %logger{36}.%M() - %msg%n"/>
+    </Console>
+  </Appenders>
+  
+  <Loggers>
+  <!-- 패키지별 -->
+    <Logger name="com.mycompany.springwebapp" level="info" additivity="false">
+      <AppenderRef ref="Out"/>
+    </Logger>
+  <!-- 패키지 상관없이 -->
+    <Root level="error">
+      <AppenderRef ref="Out"/>
+    </Root>
+  </Loggers>
+</Configuration>
