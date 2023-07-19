@@ -14,7 +14,7 @@
          <div class="card-body">
             <div class="m-2"><a href="method?bkind=free&bno=1" class="btn btn-info btn-sm">GET방식(&lt;a&gt;)</a></div>
             <hr/>
-            <form class="m-2" method="get" action="${pageContext.request.contextPath}/ch02/method">
+            <form class="m-2" method="get" action="method">
                <div class="form-group">
                    <label for="bkind">bkind</label>
                    <input type="text" class="form-control" id="bkind" name="bkind" value="free">
@@ -35,10 +35,14 @@
          <script>
             function requestGet() {
                $.ajax({
-                  url:"${pageContext.request.contextPath}/ch02/method",
-                  method: "GET"
-               })
-               .done((data) => {});
+                  url:"method",
+                  method: "GET",
+                  //data: {bkind:"free", bno:1},
+                  data: "bkind=qna&bno=3",
+                  success: function(data) {
+                	  
+                  }
+               });
             }         
          </script>
       </div>
@@ -69,10 +73,11 @@
          <script>
             function requestPost() {
                $.ajax({
-                  url:"${pageContext.request.contextPath}/ch02/method",
-                  method: "POST"
-               })
-               .done((data) => {});
+                  url:"method",
+                  method: "POST",
+                  data: {bkind:"general", bno:5},
+                  success: function(data) {}
+               });
             }
          </script>
       </div>
@@ -88,79 +93,89 @@
          </div>
          <script>
             function requestPut() {
+            	var data = {bkind:"general", bno:5};
+            	var json = JSON.stringify(data);
                $.ajax({
-                  url:"${pageContext.request.contextPath}/ch02/method",
-                  method: "PUT"
-               })
-               .done((data) => {});
+                  url:"method",
+                  method: "PUT",
+                  contentType: "application/json; charset=UTF-8",
+                  data: JSON.stringify({bkind:"free", bno:5}),
+                  success: function(data) {
+						console.log(data);
+                  }
+               });
             }
             function requestDelete() {
                $.ajax({
-                  url:"${pageContext.request.contextPath}/ch02/method",
-                  method: "DELETE"
-               })
-               .done((data) => {});
+                  url:"method",
+                  method: "DELETE",
+                  contentType: "application/json; charset=UTF-8",
+                  data: JSON.stringify({bno:3}),
+                  success: function(data) {}
+               });
             }
          </script>         
       </div>
       
       <div class="card m-2">
          <div class="card-header">
-            AJAX
+          	  다양한 응답 생성
          </div>
          <div class="card-body">            
-            <a href="javascript:ajax1()" class="btn btn-info btn-sm">AJAX 요청(HTML 조각 얻기)</a>
-            <a href="javascript:ajax2()" class="btn btn-info btn-sm">AJAX 요청(JSON)</a>
-            <a href="javascript:ajax3()" class="btn btn-info btn-sm">AJAX 요청(JSON)</a>
-            <a href="javascript:ajax4()" class="btn btn-info btn-sm">AJAX 요청(JSON)</a>
+            <a href="javascript:ajax1()" class="btn btn-info btn-sm">AJAX 요청(HTML 조각 응답)</a>
+            <a href="javascript:ajax2()" class="btn btn-info btn-sm">AJAX 요청(JSON 응답)</a>
+            <a href="javascript:ajax3()" class="btn btn-info btn-sm">AJAX 요청(JSON 응답)</a>
+            <a href="javascript:ajax4()" class="btn btn-info btn-sm">AJAX 요청(JSON 응답)</a>
+            <a href="javascript:fileDownload()" class="btn btn-info btn-sm">파일 다운로드</a>
             <div id="content" class="mt-2"></div>
             <script>
                function ajax1() {
-                  console.log("ajax1() 실행");
                   $.ajax({
-                     url:"ajax1"
-                  })
-                  .done((data) => {
-                     $("#content").html(data);
+                     url:"ajax1",
+                     method: "get",
+                     success: function(data) {
+                    	 $("#content").html(data);
+                     }	 
                   });
                }
                
                function ajax2() {
-                  console.log("ajax2() 실행");
                   $.ajax({
-                     url:"ajax2"
-                  })
-                  .done((data) => {
-                     $("#content").html(
-                        "<img src='${pageContext.request.contextPath}/resources/images/" + 
-                        data.fileName + "' width='200px'/>");
+                     url:"ajax2",
+                     method: "get",
+                     success: function(data) {
+                    	 //{fileName: "photo1.jpg"}
+	                     $("#content").html(
+	                        "<img src='${pageContext.request.contextPath}/resources/images/photo/" + 
+	                        data.fileName + "' width='200px'/>"
+	                      );
+                      }	 
                   });
                }
                
                function ajax3() {
-                  console.log("ajax3() 실행");
                   $.ajax({
-                     url:"ajax3"
-                  })
-                  .done((data) => {
-                     $("#content").html(
-                        "<img src='${pageContext.request.contextPath}/resources/images/" + 
-                        data.fileName + "' width='200px'/>");
-                  });
-               }
+                	  url:"ajax3",
+                      success: function(data) {
+    	                  $("#content").html(
+    	                        "<img src='${pageContext.request.contextPath}/resources/images/photo/" + 
+    	                        data.fileName + "' width='200px'/>"
+    	                      );
+                          }	 
+                      });
+                   }
                
                function ajax4() {
-                  console.log("ajax4() 실행");
                   $.ajax({
-                     url:"ajax4"
-                  })
-                  .done((data) => {
-                     console.log(data);
-                     $("#content").html(
-                        "<img src='${pageContext.request.contextPath}/resources/images/" + 
-                        data.fileName + "' width='200px'/>");
-                  });
-               }
+                     url:"ajax4",
+                   	 success: function(data) {
+      	                  $("#content").html(
+      	                        "<img src='${pageContext.request.contextPath}/resources/images/photo/" + 
+      	                        data.fileName + "' width='200px'/>"
+      	                      );
+                            }	 
+                        });
+                     }
             </script>
          </div>      
       </div>      
