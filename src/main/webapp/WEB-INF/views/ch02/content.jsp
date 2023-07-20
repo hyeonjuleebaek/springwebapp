@@ -3,7 +3,6 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
-<!-- index.jsp의 중앙 내용 -->
 <div class="card m-2">
 	<div class="card-header">Ch02. 요청 매핑 메소드</div>
 	<div class="card-body">
