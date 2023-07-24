@@ -17,7 +17,8 @@
 			<bean class="com.mycompany.springwebapp.interceptor.Ch02InterceptorB" />
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/ch08/**"/>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/resources/**"/>
 			<bean class="com.mycompany.springwebapp.interceptor.Ch08LoginCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
