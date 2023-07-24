@@ -16,6 +16,10 @@
 			<mvc:mapping path="/ch02/**"/>
 			<bean class="com.mycompany.springwebapp.interceptor.Ch02InterceptorB" />
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/ch08/**"/>
+			<bean class="com.mycompany.springwebapp.interceptor.Ch08LoginCheckInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 </beans>
