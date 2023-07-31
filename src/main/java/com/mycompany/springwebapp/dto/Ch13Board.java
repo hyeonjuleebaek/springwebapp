@@ -13,15 +13,18 @@ public class Ch13Board {
 	private int bno;
 	private String btitle;
 	private String bcontent;
-	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date bdate;
-	
 	private String mid;
 	private int bhitcount;
-	private String battachmentoname;
-	private String battachmentsname;
-	private Blob battachdata;
+	//Client -> Controller
 	private MultipartFile battach;
-	
+	//Controller -> Service -> Dao -> DB
+	private String battachoname;
+	private String battachtype;
+	//방법1: 서버 파일시스템에 파일로 저장
+	private String battachsname;
+	//방법2: DB에 BLOB으로 저장
+	//byte[] <- MyBatis -> BLOB
+	private byte[] battachdata;
 }

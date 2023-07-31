@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta charset="UTF-8">
+      <meta charset="UTF-8">	
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico" type="image/x-icon">
       <title>Insert title here</title>
@@ -24,12 +24,22 @@
             </a>
             <div>
                <div>
-               		<c:if test="${login == null}">
+               		<%-- Ch08 --%>
+               		<%-- <c:if test="${login == null}">
                			<a href="${pageContext.request.contextPath}/ch08/content" class="btn btn-success btn-sm">로그인</a>
 					</c:if>
 					<c:if test="${login != null}">
 						<img src="${pageContext.request.contextPath}/resources/images/face/${login.mid}.png" width="30" height="30" />
 						<a href="${pageContext.request.contextPath}/ch08/logout" class="btn btn-danger btn-sm" href="logout">로그아웃</a>
+					</c:if> --%>
+					
+					<c:if test="${ch13Login == null}">
+						<a href="${pageContext.request.contextPath}/ch13/join" class="btn btn-success btn-sm">회원가입</a>
+						<a href="${pageContext.request.contextPath}/ch13/login" class="btn btn-success btn-sm">로그인</a>
+					</c:if>
+					<c:if test="${ch13Login != null}">
+						<a href="${pageContext.request.contextPath}/ch13/logout" class="btn btn-danger btn-sm">로그아웃</a>
+						(현재: ${ch13Login.mid}가 로그인됨)
 					</c:if>
                </div>
             </div>

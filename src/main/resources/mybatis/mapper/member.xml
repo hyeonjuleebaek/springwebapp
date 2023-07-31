@@ -3,12 +3,12 @@
 <!-- namespace는 xml 식별자 -->
 <mapper namespace="com.mycompany.springwebapp.dao.Ch13MemberDao">
 	<insert id="insert" parameterType="Member">
-		insert into board (mid, mname, mpassword, menabled, mrole, memail)
+		insert into member (mid, mname, mpassword, menabled, mrole, memail)
 		values(#{mid}, #{mname}, #{mpassword}, 1, 'ROLE USER', #{memail})
 	</insert>
 	
 	<select id="selectByMid" parameterType="String" resultType="Member">
-		select board (mid, mname, mpassword, menabled, mrole, memail)
+		select mid, mname, mpassword, menabled, mrole, memail
 		from member
 		where mid=#{mid}
 	</select>
