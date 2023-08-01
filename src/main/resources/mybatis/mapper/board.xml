@@ -20,7 +20,7 @@
       )
    </insert>
    
-   <select id="selectByPage" parameterType="Pager"  resultType="Board">
+   <select id="selectByPage" parameterType="Pager" resultType="Board">
       <![CDATA[
       select rnum, bno, btitle, mid, bdate, bhitcount, battachoname
       from (
