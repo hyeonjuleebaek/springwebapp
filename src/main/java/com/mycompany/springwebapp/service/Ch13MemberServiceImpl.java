@@ -41,6 +41,7 @@ public class Ch13MemberServiceImpl implements Ch13MemberService {
 			if(dbMember.isMenabled()) {
 				return LoginResult.SUCCESS;
 			} else {
+				//휴면회원인 경우
 				return LoginResult.FAIL_ENABLED;
 			}
 		} else {
