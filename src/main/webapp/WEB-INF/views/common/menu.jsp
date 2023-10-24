@@ -92,4 +92,10 @@
          <a class="text-white" href="${pageContext.request.contextPath}/ch15/content">트랜잭션 처리</a>
       </h6>
    </li>
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Ch17.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch17/content">스프링 시큐리티</a>
+      </h6>
+   </li>
 </ul>

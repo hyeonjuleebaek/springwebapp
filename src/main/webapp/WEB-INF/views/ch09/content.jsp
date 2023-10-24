@@ -74,7 +74,7 @@
       
       <div class="card">
          <div class="card-header">
-            File Downlaod
+            File Download
          </div>
          <div class="card-body">
             <a id="link1" href="filedownload?saveFilename=${saveFilename}" class="btn btn-info btn-sm">파일 다운로드</a>

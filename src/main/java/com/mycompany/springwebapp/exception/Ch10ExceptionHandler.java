@@ -35,11 +35,11 @@ public class Ch10ExceptionHandler {
       return "ch10/500_soldout";
    }
    
-   @ExceptionHandler
+   /*@ExceptionHandler
    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
    public String handleOtherException(Exception e) {
 	   return "ch10/500";
-   }
+   }*/
    
    @ExceptionHandler(NoHandlerFoundException.class)
    @ResponseStatus(HttpStatus.NOT_FOUND)

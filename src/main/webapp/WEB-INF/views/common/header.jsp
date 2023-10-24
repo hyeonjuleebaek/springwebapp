@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -33,14 +34,34 @@
 						<a href="${pageContext.request.contextPath}/ch08/logout" class="btn btn-danger btn-sm" href="logout">로그아웃</a>
 					</c:if> --%>
 					
-					<c:if test="${ch13Login == null}">
+					<%-- Ch13 --%>
+					<%-- <c:if test="${ch13Login == null}">
 						<a href="${pageContext.request.contextPath}/ch13/join" class="btn btn-success btn-sm">회원가입</a>
 						<a href="${pageContext.request.contextPath}/ch13/login" class="btn btn-success btn-sm">로그인</a>
 					</c:if>
 					<c:if test="${ch13Login != null}">
 						<a href="${pageContext.request.contextPath}/ch13/logout" class="btn btn-danger btn-sm">로그아웃</a>
 						(현재: ${ch13Login.mid}가 로그인됨)
-					</c:if>
+					</c:if> --%>
+					
+					<%-- Ch17 --%>
+					<div>
+						<sec:authorize access="isAnonymous()">
+							<a href="${pageContext.request.contextPath}/ch17/loginForm" class="btn btn-info btn-sm">로그인</a>
+						</sec:authorize>
+					
+						<sec:authorize access="isAuthenticated()">
+							<%-- 사이트간 요청 위조 방지가 비활성화되어 있을 경우 --%>  
+							<a href="${pageContext.request.contextPath}/logout" 
+							   class="btn btn-info btn-sm">로그아웃</a> 
+							   
+							<%-- 사이트간 요청 위조 방지가 활성화되어 있을 경우 --%>   
+							<%-- <form method="post" action="${pageContext.request.contextPath}/logout" class="d-inline-block">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+								<button class="btn btn-info btn-sm">로그아웃</button>
+							</form> --%>
+						</sec:authorize>
+					</div>
                </div>
             </div>
          </nav>
